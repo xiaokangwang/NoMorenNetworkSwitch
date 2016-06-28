@@ -14,7 +14,36 @@
     tools:context="org.kkdev.nomorenetworkswitch.MainActivity">
 
     <TextView
-        android:text="Hello World!"
+        android:text="A tool for switching between network connections for you."
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/Intro" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Initializing Switcher"
+        android:id="@+id/current_Status"
+        android:layout_below="@+id/Intro"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alter Switch"
+        android:id="@+id/btn_disableswitch"
+        android:layout_marginBottom="43dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manual refresh"
+        android:id="@+id/btn_manual_refresh"
+        android:layout_alignTop="@+id/btn_disableswitch"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
