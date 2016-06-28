@@ -1,0 +1,20 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="use_my_cred"
+        android:summary="@string/pref_header_cred_sm1"
+        android:title="@string/pref_header_cred_t1" />
+    <EditTextPreference
+        android:key="cueb_username"
+        android:title="@string/UserName_t"
+        android:summary="@string/UserName_sm"
+        android:dialogTitle="@string/UserName" />
+
+    <EditTextPreference
+        android:key="cueb_password"
+        android:title="@string/password_t"
+        android:summary="@string/password_sm"
+        android:dialogTitle="@string/password" />
+
+</PreferenceScreen>
