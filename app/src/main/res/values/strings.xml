@@ -2,4 +2,28 @@
     <string name="app_name">NoMoreNetworkSwitch</string>
     <string name="action_settings">Settings</string>
     <string name="app_noti_title">No more Switch!</string>
+    <string name="title_activity_main_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_cred">Credentials</string>
+    <string name="pref_header_cred_t1">Use my credentials for CUEB_WLAN</string>
+    <string name="pref_header_cred_sm1">We will then try to login with your credentials.</string>
+
+    <string name="UserName"> Please input your Username:</string>
+    <string name="UserName_t">Username</string>
+    <string name="UserName_sm">Set your Username for CUEB_WLAN</string>
+
+    <string name="password"> Please input your Password:</string>
+    <string name="password_t">Password</string>
+    <string name="password_sm">Set your Password for CUEB_WLAN</string>
+
+
+    <string name="addit_wlan_ssid"> Please input your Additional SSID:</string>
+    <string name="addit_wlan_ssid_t">Additional SSID</string>
+    <string name="addit_wlan_ssid_sm">If there is a ssid that is an alias for CUEB_WLAN, put it here.</string>
+
+
+
 </resources>

@@ -1,10 +1,15 @@
 package org.kkdev.nomorenetworkswitch;
 
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
@@ -16,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
 
-    protected boolean is_enabled=false;
+    protected boolean is_enabled=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,16 +69,18 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(me,NetworkSwitcher.class);
         startService(intent);
-
+        get_status_report();
         btn_disable_switch.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
                 is_enabled=!is_enabled;
                 if(!is_enabled){
                     textView_current_Status.setText("Switcher is being enabled, please wait....");
-                    sayHello();
+                    //sayHello();
+                    Set_Switch_On();
                 }else{
                     textView_current_Status.setText("Switcher is currently disabled.");
+                    Set_Switch_Off();
                 }
             }
         });
@@ -83,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         bindService(new Intent(this, NetworkSwitcher.class), mConnection,
                 Context.BIND_AUTO_CREATE);
+        get_status_report();
     }
 
     @Override
@@ -101,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, MainSettingsActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -117,4 +128,62 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    private void Set_Switch_On() {
+        if (!mBound) return;
+        // Create and send a message to the service, using a supported 'what' value
+        Message msg = Message.obtain(null, NetworkSwitcher.MSG_Set_Switch_On, 0, 0);
+        msg.replyTo = new Messenger(new ResponseHandler());
+        try {
+            mService.send(msg);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+    private void Set_Switch_Off() {
+        if (!mBound) return;
+        // Create and send a message to the service, using a supported 'what' value
+        Message msg = Message.obtain(null, NetworkSwitcher.MSG_Set_Switch_Off, 0, 0);
+        msg.replyTo = new Messenger(new ResponseHandler());
+        try {
+            mService.send(msg);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void get_status_report() {
+        if (!mBound) return;
+        // Create and send a message to the service, using a supported 'what' value
+        Message msg = Message.obtain(null, NetworkSwitcher.MSG_Get_Status_Report, 0, 0);
+        msg.replyTo = new Messenger(new ResponseHandler());
+        try {
+            mService.send(msg);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+    // This class handles the Service response
+    class ResponseHandler extends Handler {
+
+        @Override
+        public void handleMessage(Message msg) {
+            int respCode = msg.what;
+            final TextView textView_current_Status = (TextView)findViewById(R.id.current_Status);
+            switch (respCode) {
+                case NetworkSwitcher.MSG_Remote_Ind_Set: {
+                    String result = msg.getData().getString("WritingData");
+                    textView_current_Status.setText(result);
+                    break;
+                }
+                case NetworkSwitcher.MSG_Remote_Status_Report:{
+                    boolean remote_stat=msg.getData().getBoolean("Switch");
+                    is_enabled=remote_stat;
+                    break;
+                }
+            }
+        }
+
+    }
+
+
 }

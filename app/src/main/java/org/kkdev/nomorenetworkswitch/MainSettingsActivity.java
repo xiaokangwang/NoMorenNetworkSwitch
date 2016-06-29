@@ -2,6 +2,8 @@ package org.kkdev.nomorenetworkswitch;
 
 
 import android.annotation.TargetApi;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -99,7 +101,14 @@ public class MainSettingsActivity extends AppCompatPreferenceActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        startActivity(new Intent(this,MainActivity.class));
+        Intent mStartActivity = new Intent(this, MainActivity.class);
+/*        int mPendingIntentId = 223344;
+        PendingIntent mPendingIntent = PendingIntent.getActivity(this, mPendingIntentId,   mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+        AlarmManager mgr = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
+        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);*/
+        stopService(new Intent(this,NetworkSwitcher.class));
+        startActivity(mStartActivity);
+        //System.exit(0);
         return true;
 
 

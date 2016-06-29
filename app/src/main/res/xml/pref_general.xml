@@ -17,4 +17,10 @@
         android:summary="@string/password_sm"
         android:dialogTitle="@string/password" />
 
+    <EditTextPreference
+        android:key="addit_wlan_ssid"
+        android:title="@string/addit_wlan_ssid_t"
+        android:summary="@string/addit_wlan_ssid_sm"
+        android:dialogTitle="@string/addit_wlan_ssid" />
+
 </PreferenceScreen>
