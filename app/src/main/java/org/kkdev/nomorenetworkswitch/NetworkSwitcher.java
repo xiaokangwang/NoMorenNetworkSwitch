@@ -102,6 +102,7 @@ public class NetworkSwitcher extends Service {
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
+                    remoteWrite("Switcher Operating normally.");
                     messager=msg.replyTo;
                     break;
                 case MSG_network_status_alter:
@@ -161,13 +162,14 @@ public class NetworkSwitcher extends Service {
     }
 
     private boolean login(){
-        SharedPreferences settings = getSharedPreferences("org.kkdev.nomorenetworkswitch_preferences", 0);
+        SharedPreferences settings = getSharedPreferences("org.kkdev.nomorenetworkswitch_preferences", MODE_MULTI_PROCESS);
         String cueb_username = settings.getString("cueb_username", "");
         String cueb_password = settings.getString("cueb_password","");
         boolean login_enabled = settings.getBoolean("use_my_cred", true);
         if(cueb_username.isEmpty()||cueb_password.isEmpty()||!login_enabled){
             resign_noti();
             show_noti("Wifi: no login credential are configured. Login Aborted.");
+            return false;
         }
 
 
@@ -238,10 +240,11 @@ public class NetworkSwitcher extends Service {
             boolean isWiFi = activeNetInfo.getType() == ConnectivityManager.TYPE_WIFI;
             boolean isMobile = activeNetInfo.getType() == ConnectivityManager.TYPE_MOBILE;
 
-
+            Log.d("Probe", "Probing...");
             resign_noti();
             if(isWiFi){
                 show_noti("Wifi, additional probe required.");
+                Log.d("Probe", "WiFi?");
                 if(is_network_CUEB()){
                     resign_noti();
                     show_noti("Wifi, CUEB_WLAN, logining pending.");
@@ -277,15 +280,18 @@ public class NetworkSwitcher extends Service {
     }
 
     private boolean is_network_CUEB(){
+        Log.d("Probe", "WiFi? is it CUEB_WLAN?");
         WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         Log.d("wifiInfo", wifiInfo.toString());
         Log.d("SSID", wifiInfo.getSSID());
         //remoteWrite("Wifi:"+"\n"+wifiInfo.getSSID()+"\n"+wifiInfo.getBSSID());
-        SharedPreferences settings = getSharedPreferences("org.kkdev.nomorenetworkswitch_preferences",0);
+        SharedPreferences settings = getSharedPreferences("org.kkdev.nomorenetworkswitch_preferences",MODE_MULTI_PROCESS);
         String adds = settings.getString("addit_wlan_ssid","");
-        Log.i("org.kkdev", adds);
-        remoteWrite("Wifi:"+"\n"+wifiInfo.getSSID()+"\n"+wifiInfo.getBSSID()+"\n"+adds);
+        Log.d("Probe", "WiFi? is ssid =  CUEB_WLAN or "+adds);
+        Log.d("Addit_wlan_ssid", adds);
+        Log.i("Org.kkdev", adds);
+        remoteWrite("Wifi:" + "\n" + wifiInfo.getSSID() + "\n" + wifiInfo.getBSSID()+"\n"+adds);
         if(wifiInfo.getSSID().equals(adds)||wifiInfo.getSSID().equals("\"CUEB_WLAN\"")){
 
             return true;
@@ -294,5 +300,6 @@ public class NetworkSwitcher extends Service {
         }
 
     }
+
 
 }

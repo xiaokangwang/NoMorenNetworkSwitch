@@ -107,6 +107,7 @@ public class MainSettingsActivity extends AppCompatPreferenceActivity {
         AlarmManager mgr = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
         mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);*/
         stopService(new Intent(this,NetworkSwitcher.class));
+        finish();
         startActivity(mStartActivity);
         //System.exit(0);
         return true;

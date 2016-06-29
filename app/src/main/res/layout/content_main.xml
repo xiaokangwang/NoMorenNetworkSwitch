@@ -44,6 +44,8 @@
         android:text="Manual refresh"
         android:id="@+id/btn_manual_refresh"
         android:layout_alignTop="@+id/btn_disableswitch"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:clickable="false"
+        android:enabled="false" />
 
 </RelativeLayout>
