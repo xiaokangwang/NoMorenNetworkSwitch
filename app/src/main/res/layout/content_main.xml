@@ -14,7 +14,7 @@
     tools:context="org.kkdev.nomorenetworkswitch.MainActivity">
 
     <TextView
-        android:text="A tool for switching between network connections for you."
+        android:text="@string/intro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/Intro" />
@@ -32,7 +32,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alter Switch"
+        android:text="@string/alter_switch"
         android:id="@+id/btn_disableswitch"
         android:layout_marginBottom="43dp"
         android:layout_alignParentBottom="true"
@@ -41,7 +41,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Manual refresh"
+        android:text="@string/manual_refresh"
         android:id="@+id/btn_manual_refresh"
         android:layout_alignTop="@+id/btn_disableswitch"
         android:layout_alignParentEnd="true"

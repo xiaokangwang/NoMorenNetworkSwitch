@@ -56,6 +56,9 @@ public class ConnectionChangeReceiver extends BroadcastReceiver
         //context.bindService(new Intent(context, NetworkSwitcher.class), mConnection,
         //        Context.BIND_AUTO_CREATE);
         IBinder bd= peekService(context,intentx);
+        if(bd==null){
+            return;
+        }
         mService = new Messenger(bd);
         mBound = true;
         Message msg = Message.obtain(null, NetworkSwitcher.MSG_network_status_alter);

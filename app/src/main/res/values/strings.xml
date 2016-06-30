@@ -23,7 +23,26 @@
     <string name="addit_wlan_ssid"> Please input your Additional SSID:</string>
     <string name="addit_wlan_ssid_t">Additional SSID</string>
     <string name="addit_wlan_ssid_sm">If there is a ssid that is an alias for CUEB_WLAN, put it here.</string>
+    <string name="switcher_is_currently_disabled">Switcher is currently disabled.</string>
+    <string name="switcher_is_being_enabled_please_wait">Switcher is being enabled, please wait....</string>
+    <string name="no_network_nothing_to_do">No network, nothing to do.</string>
+    <string name="mobile_connection_detected_idle">Mobile connection detected, idle.</string>
+    <string name="wifi_not_recognized">Wifi, not recognized.</string>
+    <string name="wifi_cueb_wlan_pending">Wifi, CUEB_WLAN, log in pending.</string>
+    <string name="wifi_additional_probe_required">Wifi, additional probe required.</string>
+    <string name="wifi_login_failed_unexpected_response_">Wifi, login failed: Unexpected response.</string>
+    <string name="wifi_login_failed_incorrect_password">Wifi, login failed: Incorrect password</string>
+    <string name="wifi_login_failed_incorrect_username">Wifi, login failed: Incorrect username</string>
+    <string name="wifi_login_resp">Wifi, login resp:</string>
+    <string name="switching_on_progressing">Switching on is progressing</string>
+    <string name="Started_making_the_initial_probe">Started~ Making the initial probe...</string>
+    <string name="switching_off_progressing">Switching off is progressing</string>
+    <string name="switcher_operating_normally">Switcher Operating normally.</string>
+    <string name="wifi_no_login_cred_conf">Wifi: no login credential are configured. Login Aborted.</string>
 
+    <string name="alter_switch">Alter Switch</string>
+    <string name="intro">A tool for switching between network connections for you.</string>
+    <string name="manual_refresh">Manual refresh</string>
 
 
 </resources>

@@ -75,11 +75,11 @@ public class MainActivity extends AppCompatActivity {
                 // Perform action on click
                 is_enabled=!is_enabled;
                 if(!is_enabled){
-                    textView_current_Status.setText("Switcher is being enabled, please wait....");
+                    textView_current_Status.setText(R.string.switcher_is_being_enabled_please_wait);
                     //sayHello();
                     Set_Switch_On();
                 }else{
-                    textView_current_Status.setText("Switcher is currently disabled.");
+                    textView_current_Status.setText(R.string.switcher_is_currently_disabled);
                     Set_Switch_Off();
                 }
             }

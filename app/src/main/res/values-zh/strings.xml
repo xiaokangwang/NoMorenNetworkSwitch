@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NoMoreNetworkSwitch</string>
+    <string name="Started_making_the_initial_probe">已经启动，正在进行第一次网络环境探测</string>
+    <string name="UserName">请输入您的用户名：</string>
+    <string name="UserName_sm">请输入您登陆 CUEB_WLAN 时的用户名</string>
+    <string name="UserName_t">用户名</string>
+    <string name="action_settings">设置</string>
+    <string name="addit_wlan_ssid">请输入额外的WiFi名称：</string>
+    <string name="addit_wlan_ssid_sm">如果你的宿舍有自己的WiFi的话，请在这里输入</string>
+    <string name="addit_wlan_ssid_t">额外的WiFi名称</string>
+    <string name="app_noti_title">再也不用登陆网络啦～</string>
+    <string name="mobile_connection_detected_idle">检测到手机网络，程序空闲。</string>
+    <string name="no_network_nothing_to_do">没有连接到网络，无所事事中。</string>
+    <string name="password">请您输入您的登陆密码：</string>
+    <string name="password_sm">设置登陆 CUEB_WLAN 的密码</string>
+    <string name="password_t">密码</string>
+    <string name="pref_header_cred">凭据</string>
+    <string name="pref_header_cred_sm1">如果您打开这个选项，我们就会自动使用您在这里设置的凭据登陆 CUEB_WLAN.</string>
+    <string name="pref_header_cred_t1">使用我的凭据登陆 CUEB_WLAN</string>
+    <string name="title_activity_main_settings">设置</string>
+    <string name="alter_switch">启用/停用</string>
+    <string name="intro">这个工具将在您连接到学校wifi后为您登陆，配置完成后，可以无介入持续运行</string>
+    <string name="switcher_is_currently_disabled">工具已停用</string>
+    <string name="manual_refresh">手动刷新</string>
+    <string name="switcher_is_being_enabled_please_wait">工具正在启动中，请等待。。。</string>
+    <string name="switcher_operating_normally">工具正常运行中</string>
+    <string name="switching_off_progressing">正在停用</string>
+    <string name="switching_on_progressing">正在启用</string>
+    <string name="wifi_additional_probe_required">Wifi, 需要进一步探测。</string>
+    <string name="wifi_cueb_wlan_pending">Wifi, CUEB_WLAN 正在登陆中。</string>
+    <string name="wifi_login_failed_incorrect_password">Wifi, 登陆失败： 用户名不正确。</string>
+    <string name="wifi_login_failed_incorrect_username">Wifi, 登陆失败： 密码不正确。</string>
+    <string name="wifi_login_failed_unexpected_response_">Wifi, 登陆失败： 未预料的反馈。</string>
+    <string name="wifi_login_resp">Wifi, 登陆反馈：</string>
+    <string name="wifi_not_recognized">Wifi, 未识别。</string>
+    <string name="wifi_no_login_cred_conf">Wifi, 没有设置登陆凭据。</string>
+</resources>

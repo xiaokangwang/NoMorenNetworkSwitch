@@ -64,10 +64,10 @@ public class NetworkSwitcher extends Service {
                     try{
                         Message resp = Message.obtain(null, MSG_Remote_Ind_Set);
                         Bundle bResp = new Bundle();
-                        bResp.putString("WritingData", "Switching on is progressing");
+                        bResp.putString("WritingData", getString(R.string.switching_on_progressing));
                         resp.setData(bResp);
                         resign_noti();
-                        show_noti("Started~ Making the initial probe...");
+                        show_noti(getString(R.string.Started_making_the_initial_probe));
                         Switch_Stat=true;
                         messager=msg.replyTo;
                         msg.replyTo.send(resp);
@@ -81,7 +81,7 @@ public class NetworkSwitcher extends Service {
                     try{
                         Message resp = Message.obtain(null, MSG_Remote_Ind_Set);
                         Bundle bResp = new Bundle();
-                        bResp.putString("WritingData", "Switching off is progressing");
+                        bResp.putString("WritingData", getString(R.string.switching_off_progressing));
                         resp.setData(bResp);
                         //Thread.sleep(0);
                         //Thread.sleep(0);
@@ -102,7 +102,7 @@ public class NetworkSwitcher extends Service {
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
-                    remoteWrite("Switcher Operating normally.");
+                    remoteWrite(getString(R.string.switcher_operating_normally));
                     messager=msg.replyTo;
                     break;
                 case MSG_network_status_alter:
@@ -168,7 +168,7 @@ public class NetworkSwitcher extends Service {
         boolean login_enabled = settings.getBoolean("use_my_cred", true);
         if(cueb_username.isEmpty()||cueb_password.isEmpty()||!login_enabled){
             resign_noti();
-            show_noti("Wifi: no login credential are configured. Login Aborted.");
+            show_noti(getString(R.string.wifi_no_login_cred_conf));
             return false;
         }
 
@@ -201,15 +201,15 @@ public class NetworkSwitcher extends Service {
             if(resp.length()!=0){
                 //resign_noti();
                 //show_noti("Wifi, login resp:" + resp + "%" + resp.length());
-                remoteWrite("Wifi, login resp:"+resp+"%"+resp.length());
+                remoteWrite(getString(R.string.wifi_login_resp)+resp+"%"+resp.length());
                 switch (resp.length()){
                     case 6:
                         //Incorrect user name
-                        show_noti("Wifi, login failed: Incorrect username");
+                        show_noti(getString(R.string.wifi_login_failed_incorrect_username));
                         break;
                     case 5:
                         //Incorrect password:
-                        show_noti("Wifi, login failed: Incorrect password");
+                        show_noti(getString(R.string.wifi_login_failed_incorrect_password));
                         break;
                     case 89:
                         //OK:
@@ -218,7 +218,7 @@ public class NetworkSwitcher extends Service {
                         show_noti("Wifi, signed in: "+wifiInfo.getSSID());
                         break;
                     default:
-                        show_noti("Wifi, login failed: Unexpected response.");
+                        show_noti(getString(R.string.wifi_login_failed_unexpected_response_));
                 }
             }
         } catch (ClientProtocolException e) {
@@ -243,24 +243,24 @@ public class NetworkSwitcher extends Service {
             Log.d("Probe", "Probing...");
             resign_noti();
             if(isWiFi){
-                show_noti("Wifi, additional probe required.");
+                show_noti(getString(R.string.wifi_additional_probe_required));
                 Log.d("Probe", "WiFi?");
                 if(is_network_CUEB()){
                     resign_noti();
-                    show_noti("Wifi, CUEB_WLAN, logining pending.");
+                    show_noti(getString(R.string.wifi_cueb_wlan_pending));
                     login();
                 }else{
                     resign_noti();
-                    show_noti("Wifi, not recognized.");
+                    show_noti(getString(R.string.wifi_not_recognized));
                 }
             }else if(isMobile){
-                show_noti("Mobile connection detected, idle.");
+                show_noti(getString(R.string.mobile_connection_detected_idle));
             }
 
 
         }else{
             resign_noti();
-            show_noti("No network, nothing to do.");
+            show_noti(getString(R.string.no_network_nothing_to_do));
 
         }
     }
